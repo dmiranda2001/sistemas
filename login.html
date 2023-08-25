@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Tickets</title>
+<style>
+  /* Estilos para el sistema de tickets */
+  /* ... (Estilos del sistema de tickets van aquí) ... */
+  
+  /* Estilos para los formularios de inicio de sesión y registro */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('images/TIM_1849-1.jpg'); /* Reemplaza con la ruta de tu imagen local */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .container {
+    position: relative;
+    background-color: rgba(253, 249, 249, 0.932);
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgb(247, 236, 236);
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+  }
+
+  .form-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-container.active {
+    display: flex;
+  }
+
+  input {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+  }
+
+  button {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #555;
+  }
+
+  /* Estilos para el título flotante */
+  .title {
+    position: absolute;
+    top: 10px;
+    left: 50%; /* Alinear en el centro horizontal */
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    font-size: 24px;
+    color: #333;
+    z-index: 2;
+  }
+
+  /* Estilos para el mensaje de inicio de sesión exitoso */
+  .success-message,
+  .error-message {
+    display: none;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 3px;
+  }
+
+  .success-message {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .error-message {
+    background-color: #FF5733;
+    color: white;
+  }
+
+  .show-message {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">TICKETS MCD</div>
+    <!-- Formulario de inicio de sesión -->
+    <div class="form-container active" id="login-container">
+      <form class="login-form" id="login-form">
+        <input type="text" id="username" placeholder="Nombre de Usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button type="submit">Iniciar Sesión</button>
+        <button type="button" id="show-register">Registrarse</button>
+        <div class="success-message" id="success-login">Inicio de sesión exitoso</div>
+        <div class="error-message" id="error-login">Credenciales incorrectas</div>
+      </form>
+    </div>
+    <!-- ... (Resto del código) ... -->
+  </div>
+  <script>
+    const loginContainer = document.getElementById('login-container');
+    const showRegisterButton = document.getElementById('show-register');
+    const loginForm = document.getElementById('login-form');
+    const successLoginMessage = document.getElementById('success-login');
+    const errorLoginMessage = document.getElementById('error-login');
+
+    showRegisterButton.addEventListener('click', () => {
+      loginContainer.classList.remove('active');
+      // ... (Otras acciones)
+    });
+
+    loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    // Verificar la contraseña estática
+    if (username === 'diego' && password === '1234') {
+      successLoginMessage.classList.add('show-message');
+      setTimeout(() => {
+        successLoginMessage.classList.remove('show-message');
+        window.location.href = 'dashboard.html'; // Redirigir al dashboard
+      }, 2000);
+      // ... (Otras acciones)
+    } else {
+      errorLoginMessage.classList.add('show-message');
+      setTimeout(() => {
+        errorLoginMessage.classList.remove('show-message');
+      }, 2000);
+      // ... (Otras acciones)
+    }
+  });
+</script>
+</body>
+</html>
